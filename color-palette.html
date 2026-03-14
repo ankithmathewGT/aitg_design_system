@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Color Palette</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+      background: #fff;
+      color: #111;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 2.5rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .group {
+      margin-bottom: 2rem;
+    }
+
+    .group-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 0.75rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .swatch-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      width: 90px;
+    }
+
+    .swatch {
+      width: 90px;
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .swatch-token {
+      font-size: 0.6rem;
+      color: #444;
+      text-align: center;
+      line-height: 1.3;
+      word-break: break-all;
+    }
+
+    .swatch-value {
+      font-size: 0.55rem;
+      color: #999;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .mode-pair {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      width: 90px;
+    }
+
+    .mode-pair .swatch {
+      height: 28px;
+    }
+
+    .mode-label {
+      font-size: 0.5rem;
+      color: #bbb;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pair-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    @media print {
+      body { padding: 1rem; }
+      .group { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme Color Palette</h1>
+  <p class="subtitle">globals.css · Light &amp; Dark mode · OKLCH color space</p>
+
+  <script>
+    // All colors from globals.css
+    const groups = [
+      {
+        name: "Core",
+        tokens: [
+          { name: "--background",   light: "oklch(1 0 0)",       dark: "oklch(0.145 0 0)" },
+          { name: "--foreground",   light: "oklch(0.145 0 0)",   dark: "oklch(0.985 0 0)" },
+        ]
+      },
+      {
+        name: "Card",
+        tokens: [
+          { name: "--card",             light: "oklch(1 0 0)",       dark: "oklch(0.205 0 0)" },
+          { name: "--card-foreground",  light: "oklch(0.145 0 0)",   dark: "oklch(0.985 0 0)" },
+        ]
+      },
+      {
+        name: "Popover",
+        tokens: [
+          { name: "--popover",             light: "oklch(1 0 0)",       dark: "oklch(0.205 0 0)" },
+          { name: "--popover-foreground",  light: "oklch(0.145 0 0)",   dark: "oklch(0.985 0 0)" },
+        ]
+      },
+      {
+        name: "Primary",
+        tokens: [
+          { name: "--primary",             light: "oklch(0.205 0 0)",   dark: "oklch(0.922 0 0)" },
+          { name: "--primary-foreground",  light: "oklch(0.985 0 0)",   dark: "oklch(0.205 0 0)" },
+        ]
+      },
+      {
+        name: "Secondary",
+        tokens: [
+          { name: "--secondary",             light: "oklch(0.97 0 0)",    dark: "oklch(0.269 0 0)" },
+          { name: "--secondary-foreground",  light: "oklch(0.205 0 0)",   dark: "oklch(0.985 0 0)" },
+        ]
+      },
+      {
+        name: "Muted",
+        tokens: [
+          { name: "--muted",             light: "oklch(0.97 0 0)",    dark: "oklch(0.269 0 0)" },
+          { name: "--muted-foreground",  light: "oklch(0.556 0 0)",   dark: "oklch(0.708 0 0)" },
+        ]
+      },
+      {
+        name: "Accent",
+        tokens: [
+          { name: "--accent",             light: "oklch(0.97 0 0)",    dark: "oklch(0.371 0 0)" },
+          { name: "--accent-foreground",  light: "oklch(0.205 0 0)",   dark: "oklch(0.985 0 0)" },
+        ]
+      },
+      {
+        name: "Destructive",
+        tokens: [
+          { name: "--destructive",             light: "oklch(0.577 0.245 27.325)", dark: "oklch(0.704 0.191 22.216)" },
+          { name: "--destructive-foreground",  light: "oklch(0.97 0.01 17)",       dark: "oklch(0.58 0.22 27)" },
+        ]
+      },
+      {
+        name: "Border / Input / Ring",
+        tokens: [
+          { name: "--border", light: "oklch(0.922 0 0)",       dark: "oklch(1 0 0 / 10%)" },
+          { name: "--input",  light: "oklch(0.922 0 0)",       dark: "oklch(1 0 0 / 15%)" },
+          { name: "--ring",   light: "oklch(0.708 0 0)",       dark: "oklch(0.556 0 0)" },
+        ]
+      },
+      {
+        name: "Sidebar",
+        tokens: [
+          { name: "--sidebar",                      light: "oklch(0.985 0 0)",          dark: "oklch(0.205 0 0)" },
+          { name: "--sidebar-foreground",           light: "oklch(0.145 0 0)",          dark: "oklch(0.985 0 0)" },
+          { name: "--sidebar-primary",              light: "oklch(0.205 0 0)",          dark: "oklch(0.488 0.243 264.376)" },
+          { name: "--sidebar-primary-foreground",   light: "oklch(0.985 0 0)",          dark: "oklch(0.985 0 0)" },
+          { name: "--sidebar-accent",               light: "oklch(0.97 0 0)",           dark: "oklch(0.269 0 0)" },
+          { name: "--sidebar-accent-foreground",    light: "oklch(0.205 0 0)",          dark: "oklch(0.985 0 0)" },
+          { name: "--sidebar-border",               light: "oklch(0.922 0 0)",          dark: "oklch(1 0 0 / 10%)" },
+          { name: "--sidebar-ring",                 light: "oklch(0.708 0 0)",          dark: "oklch(0.439 0 0)" },
+        ]
+      },
+      {
+        name: "Chart",
+        tokens: [
+          { name: "--chart-1", light: "oklch(0.707 0.165 254.624)", dark: "oklch(0.707 0.165 254.624)" },
+          { name: "--chart-2", light: "oklch(0.585 0.233 260.805)", dark: "oklch(0.585 0.233 260.805)" },
+          { name: "--chart-3", light: "oklch(0.546 0.245 262.881)", dark: "oklch(0.546 0.245 262.881)" },
+          { name: "--chart-4", light: "oklch(0.488 0.243 264.376)", dark: "oklch(0.488 0.243 264.376)" },
+          { name: "--chart-5", light: "oklch(0.424 0.199 265.638)", dark: "oklch(0.424 0.199 265.638)" },
+        ]
+      },
+      {
+        name: "Surface / Code",
+        tokens: [
+          { name: "--surface",            light: "oklch(0.98 0 0)",    dark: "oklch(0.2 0 0)" },
+          { name: "--surface-foreground", light: "oklch(0.145 0 0)",   dark: "oklch(0.708 0 0)" },
+          { name: "--code-highlight",     light: "oklch(0.96 0 0)",    dark: "oklch(0.27 0 0)" },
+          { name: "--code-number",        light: "oklch(0.56 0 0)",    dark: "oklch(0.72 0 0)" },
+        ]
+      },
+      {
+        name: "Selection",
+        tokens: [
+          { name: "--selection",            light: "oklch(0.145 0 0)",   dark: "oklch(0.922 0 0)" },
+          { name: "--selection-foreground", light: "oklch(1 0 0)",       dark: "oklch(0.205 0 0)" },
+        ]
+      },
+    ];
+
+    const container = document.body;
+
+    groups.forEach(group => {
+      const section = document.createElement('div');
+      section.className = 'group';
+
+      const title = document.createElement('div');
+      title.className = 'group-title';
+      title.textContent = group.name;
+      section.appendChild(title);
+
+      const swatches = document.createElement('div');
+      swatches.className = 'swatches';
+
+      group.tokens.forEach(token => {
+        const wrap = document.createElement('div');
+        wrap.className = 'swatch-wrap';
+
+        // Light swatch
+        const lightSwatch = document.createElement('div');
+        lightSwatch.className = 'swatch';
+        lightSwatch.style.background = token.light;
+
+        // Dark swatch
+        const darkSwatch = document.createElement('div');
+        darkSwatch.className = 'swatch';
+        darkSwatch.style.background = token.dark;
+        darkSwatch.style.marginTop = '2px';
+
+        const pairRow = document.createElement('div');
+        pairRow.className = 'pair-row';
+
+        const lLabel = document.createElement('div');
+        lLabel.className = 'mode-label';
+        lLabel.textContent = 'light';
+
+        const dLabel = document.createElement('div');
+        dLabel.className = 'mode-label';
+        dLabel.textContent = 'dark';
+
+        pairRow.appendChild(lLabel);
+        pairRow.appendChild(lightSwatch);
+        pairRow.appendChild(dLabel);
+        pairRow.appendChild(darkSwatch);
+
+        const tokenLabel = document.createElement('div');
+        tokenLabel.className = 'swatch-token';
+        tokenLabel.textContent = token.name;
+
+        wrap.appendChild(pairRow);
+        wrap.appendChild(tokenLabel);
+        swatches.appendChild(wrap);
+      });
+
+      section.appendChild(swatches);
+      container.appendChild(section);
+    });
+  </script>
+</body>
+</html>
