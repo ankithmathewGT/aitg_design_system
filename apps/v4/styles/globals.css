@@ -513,3 +513,26 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Shiki dual-theme support */
+.shiki,
+.shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.shiki {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  background: rgb(var(--background-subtle)) !important;
+}
+
+.dark .shiki {
+  background: rgb(var(--background-subtle)) !important;
+}
